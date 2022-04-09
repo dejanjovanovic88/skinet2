@@ -14,7 +14,7 @@ namespace Core.Interfaces
         Task<TEntity> GetEntityWithSpecAsync(ISpecification<TEntity> spec);
         Task<IReadOnlyList<TEntity>> ListAsync(ISpecification<TEntity> spec);
 
-
+        Task<int> CountAsync(ISpecification<TEntity> spec);
         void Add(TEntity model);
         void Remove(TEntity model);
         void Update(TEntity model);

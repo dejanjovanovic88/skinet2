@@ -57,5 +57,10 @@ namespace Infrastructure.Data
         {
 
         }
+
+        public async Task<int> CountAsync(ISpecification<TEntity> spec)
+        {
+            return await ApplySpecification(spec).CountAsync();
+        }
     }
 }
