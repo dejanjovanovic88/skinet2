@@ -34,7 +34,7 @@ namespace API.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IReadOnlyList<ProductToReturnDto>>> GetProducts([FromQuery] ProductParams productParams)
+        public async Task<ActionResult<Pagination<ProductToReturnDto>>> GetProducts([FromQuery] ProductParams productParams)
         {
             var spec = new ProductsWithBrandsAndTypesSpecification(productParams);
             var countSpec = new ProductsSpecificationForFilteringCount(productParams);

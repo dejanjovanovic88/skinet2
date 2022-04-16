@@ -1,1 +1,5 @@
-<h1>Welcome to {{title}}</h1>
+<div class="wrapper">
+    <app-nav-bar></app-nav-bar>
+    <app-footer></app-footer>
+    <p *ngFor="let item of produtcs">{{item.name}}</p>
+</div>
