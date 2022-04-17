@@ -1,0 +1,53 @@
+<div class="container">
+    <div class="row">
+        <section class="col-3">
+            <h5>Sort:</h5>
+            <select (change)="onSortSelected($event)" class="custom-select mb-3">
+                <option *ngFor="let sort of sortOptions" [class.active]="sort.value===this.shopParams.sort"
+                    [value]="sort.value">
+                    {{sort.name}}</option>
+            </select>
+            <h5 class="text-warning">Brands</h5>
+            <ul class="list-group">
+                <li *ngFor="let brand of brands" (click)="onBrandSelected(brand.id)" [value]="brand.id"
+                    class="list-group-item" [class.active]="brand.id===this.shopParams.brandId" aria-current="true">
+                    {{brand.name}}</li>
+
+            </ul>
+
+            <h5 class="text-warning">Types</h5>
+            <ul class="list-group">
+                <li *ngFor="let type of types" [value]="type.id" (click)="onTypeSelected(type.id)"
+                    class="list-group-item" [class.active]="type.id===this.shopParams.typeId" aria-current="true">
+                    {{type.name}}</li>
+
+            </ul>
+        </section>
+
+        <section class="col-9">
+            <div class="d-flex justify-content-between align-items-center pb-2">
+
+                <app-pagination-header [pageNumber]="this.shopParams.pageNumber" [pageSize]="this.shopParams.pageSize"
+                    [totalCount]="this.totalCount"></app-pagination-header>
+
+                <div class="form-inline mt-2">
+                    <input (keyup.enter)="onSearch()" class="form-control mr-2" #search placeholder="Search"
+                        type="text">
+                    <button (click)="onSearch()" class="btn btn-outline-primary ">Search</button>
+                    <button (click)="onReset()" class="btn btn-outline-danger ml-2">Reset</button>
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 mb-4" *ngFor="let product of products">
+                    <app-product-item [product]="product"></app-product-item>
+                </div>
+
+            </div>
+            <div *ngIf="this.totalCount && this.totalCount>0" class="justify-content-center d-flex">
+                <app-pager [pageSize]="this.shopParams.pageSize" [totalCount]="this.totalCount"
+                    (pageChanged)="onPageChanged($event)"></app-pager>
+            </div>
+        </section>
+    </div>
+</div>
