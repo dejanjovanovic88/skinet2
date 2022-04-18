@@ -17,7 +17,6 @@ import { ShopModule } from './shop/shop.module';
     BrowserAnimationsModule,
     CoreModule,
     SharedModule,
-    ShopModule,
     HttpClientModule,
   ],
   providers: [],
